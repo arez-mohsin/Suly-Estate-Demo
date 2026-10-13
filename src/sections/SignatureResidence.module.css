@@ -8,7 +8,7 @@
 .divider {
   position: absolute;
   top: 0;
-  left: var(--space-desktop);
+  inset-inline-start: var(--space-desktop);
   width: calc(100% - var(--space-desktop) * 2) !important;
 }
 

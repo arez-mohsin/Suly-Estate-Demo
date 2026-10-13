@@ -123,13 +123,13 @@
 
 .featureList li {
   position: relative;
-  padding-left: 20px;
+  padding-inline-start: 20px;
 }
 
 .featureList li::before {
   content: '—';
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   color: var(--color-muted-brown);
 }
 
@@ -209,7 +209,7 @@
 .relatedDivider {
   position: absolute;
   top: 0;
-  left: var(--space-desktop);
+  inset-inline-start: var(--space-desktop);
   width: calc(100% - var(--space-desktop) * 2) !important;
 }
 
@@ -229,10 +229,8 @@
     scroll-behavior: smooth;
     gap: 24px;
     padding-bottom: 24px;
-    margin-right: calc(-1 * var(--space-desktop));
-    margin-left: calc(-1 * var(--space-desktop));
-    padding-left: var(--space-desktop);
-    padding-right: var(--space-desktop);
+    margin-inline: calc(-1 * var(--space-desktop));
+    padding-inline: var(--space-desktop);
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
@@ -338,10 +336,8 @@
   }
   .relatedGrid {
     scroll-padding-inline: var(--space-mobile);
-    margin-right: calc(-1 * var(--space-mobile));
-    margin-left: calc(-1 * var(--space-mobile));
-    padding-left: var(--space-mobile);
-    padding-right: var(--space-mobile);
+    margin-inline: calc(-1 * var(--space-mobile));
+    padding-inline: var(--space-mobile);
     gap: 16px;
   }
   

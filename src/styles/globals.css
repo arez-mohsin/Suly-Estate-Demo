@@ -11,8 +11,13 @@
   --color-border-light: rgba(0, 0, 0, 0.12);
 
   /* Typography */
-  --font-display: 'Newsreader', serif;
-  --font-body: 'Manrope', sans-serif;
+  --font-display-ltr: 'Newsreader', serif;
+  --font-body-ltr: 'Manrope', sans-serif;
+  --font-display-rtl: 'IBM Plex Sans Arabic', sans-serif;
+  --font-body-rtl: 'IBM Plex Sans Arabic', 'Noto Sans Arabic', sans-serif;
+
+  --font-display: var(--font-display-ltr);
+  --font-body: var(--font-body-ltr);
 
   /* Spacing */
   --space-mobile: 20px;
@@ -109,6 +114,115 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   color: var(--color-muted-text);
 }
+
+/* RTL Typography & Direction Overrides */
+[dir="rtl"], html[dir="rtl"] {
+  --font-display: var(--font-display-rtl);
+  --font-body: var(--font-body-rtl);
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+  font-family: var(--font-display-rtl);
+  font-weight: 500;
+  line-height: 1.18;
+}
+
+[dir="rtl"] .display-1 {
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.14;
+}
+
+[dir="rtl"] .display-2 {
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.16;
+}
+
+[dir="rtl"] .display-3 {
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+[dir="rtl"] .eyebrow,
+[dir="rtl"] [class*="eyebrow"] {
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 500;
+  font-size: 0.8125rem;
+}
+
+[dir="rtl"] button,
+[dir="rtl"] [class*="btn"],
+[dir="rtl"] [class*="Btn"],
+[dir="rtl"] [class*="button"] {
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 500;
+}
+
+[dir="rtl"] nav a,
+[dir="rtl"] [class*="navLink"] {
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 400;
+}
+
+[dir="rtl"] p,
+[dir="rtl"] body {
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.65;
+}
+
+[dir="rtl"] blockquote,
+[dir="rtl"] [class*="quote"],
+[dir="rtl"] cite,
+[dir="rtl"] em,
+[dir="rtl"] i {
+  font-style: normal;
+}
+
+[dir="rtl"] label,
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+  font-family: var(--font-body-rtl);
+  letter-spacing: 0;
+}
+
+[dir="rtl"] [class*="badge"],
+[dir="rtl"] [class*="Badge"],
+[dir="rtl"] [class*="tag"],
+[dir="rtl"] [class*="meta"],
+[dir="rtl"] [class*="Meta"],
+[dir="rtl"] [class*="caption"],
+[dir="rtl"] [class*="label"],
+[dir="rtl"] [class*="Label"] {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Force brand logo and numeric isolation to maintain LTR formatting */
+.brand-name,
+[dir="rtl"] .brand-name {
+  font-family: var(--font-body-ltr) !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  direction: ltr !important;
+}
+
+bdi[dir="ltr"] {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
 
 /* Accessibility */
 .visually-hidden {

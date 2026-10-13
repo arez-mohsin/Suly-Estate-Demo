@@ -4,7 +4,9 @@ import styles from './Header.module.css';
 import { MenuIcon, CloseIcon } from './Icons';
 import { Button } from './Button';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { useSmoothScroll } from '../providers/SmoothScrollProvider';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const Header = () => {
   const [headerTheme, setHeaderTheme] = useState('transparent');
@@ -89,11 +91,13 @@ export const Header = () => {
     };
   }, [menuOpen, lenis]);
 
+  const { t } = useTranslation();
+
   const navLinks = [
-    { name: 'Properties', href: '/#properties', id: 'properties' },
-    { name: 'Neighborhoods', href: '/#neighborhoods', id: 'neighborhoods' },
-    { name: 'Our Approach', href: '/#approach', id: 'approach' },
-    { name: 'About', href: '/#about', id: 'about' },
+    { name: t('nav.properties'), href: '/#properties', id: 'properties' },
+    { name: t('nav.neighborhoods'), href: '/#neighborhoods', id: 'neighborhoods' },
+    { name: t('nav.approach'), href: '/#approach', id: 'approach' },
+    { name: t('nav.about'), href: '/#about', id: 'about' },
   ];
 
   const headerClass = `${styles.header} ${styles[`theme-${headerTheme}`] || styles['theme-dark']}`;
@@ -101,7 +105,7 @@ export const Header = () => {
   return (
     <>
       <header className={headerClass} data-qa="site-header" data-qa-header-theme={headerTheme}>
-        <Link to="/" className={styles.logo}>
+        <Link to="/" className={`${styles.logo} brand-name`} dir="ltr">
           <span>SULY</span>
           <span>ESTATES</span>
         </Link>
@@ -111,7 +115,7 @@ export const Header = () => {
             {navLinks.map((link) => {
               const isActive = activeSection === link.id && location.pathname === '/';
               return (
-                <li key={link.name}>
+                <li key={link.id}>
                   <Link to={link.href} className={`${styles.navLink} ${isActive ? styles.active : ''}`}>
                     {link.name}
                   </Link>
@@ -122,6 +126,7 @@ export const Header = () => {
         </nav>
 
         <div className={styles.actions}>
+          <LanguageSwitcher variant="header" />
           <Button 
             variant="outline" 
             className={styles.inquireBtn} 
@@ -129,12 +134,12 @@ export const Header = () => {
             onClick={() => window.dispatchEvent(new Event('open-consultation'))}
             data-qa="header-inquire"
           >
-            Inquire
+            {t('common.inquire')}
           </Button>
           <button 
             className={styles.mobileMenuBtn} 
             onClick={() => setMenuOpen(true)}
-            aria-label="Open menu"
+            aria-label={t('common.openMenu')}
             aria-expanded={menuOpen}
             data-qa="mobile-menu-trigger"
           >
@@ -157,14 +162,14 @@ export const Header = () => {
             aria-label="Site Navigation"
           >
             <div className={styles.mobileMenuHeader}>
-              <Link to="/" className={styles.logo} onClick={() => setMenuOpen(false)}>
+              <Link to="/" className={`${styles.logo} brand-name`} dir="ltr" onClick={() => setMenuOpen(false)}>
                 <span>SULY</span>
                 <span>ESTATES</span>
               </Link>
               <button 
                 className={styles.mobileMenuBtn} 
                 onClick={() => setMenuOpen(false)}
-                aria-label="Close menu"
+                aria-label={t('common.closeMenu')}
               >
                 <CloseIcon size={28} />
               </button>
@@ -173,7 +178,7 @@ export const Header = () => {
             <nav className={styles.mobileNav}>
               {navLinks.map((link, i) => (
                 <motion.div
-                  key={link.name}
+                  key={link.id}
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + (i * 0.05), duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -188,6 +193,13 @@ export const Header = () => {
                 </motion.div>
               ))}
             </nav>
+
+            <LanguageSwitcher 
+              variant="mobile" 
+              onSelectLanguage={() => {
+                setTimeout(() => setMenuOpen(false), 250);
+              }} 
+            />
           </motion.div>
         )}
       </AnimatePresence>

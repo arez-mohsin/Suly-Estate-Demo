@@ -1,17 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import styles from './Neighborhoods.module.css';
-import { locations } from '../data/locations';
+import { useLocalizedLocations } from '../hooks/useLocalizedProperties';
 import { Reveal, Stagger, StaggerItem, ImageReveal, TextReveal } from '../components/Motion';
 
 export const Neighborhoods = () => {
+  const { t } = useTranslation();
+  const locations = useLocalizedLocations();
+
   return (
     <section className={styles.section} id="neighborhoods" data-header-theme="dark">
       <header className={styles.header}>
-        <TextReveal as="h2" text="Neighborhoods with character" className={`display-3 ${styles.title}`} />
+        <TextReveal as="h2" text={t('neighborhoods.title')} className={`display-3 ${styles.title}`} />
         <Reveal delay={0.1}>
           <p className={styles.description}>
-            From established residential districts to hillside addresses, discover some of Sulaymaniyah's most distinctive settings.
+            {t('neighborhoods.description')}
           </p>
         </Reveal>
       </header>

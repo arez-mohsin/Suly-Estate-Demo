@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { PerformanceProfileProvider } from './hooks/usePerformanceProfile'
 import { SmoothScrollProvider } from './providers/SmoothScrollProvider'
+import './i18n'
 import './styles/globals.css'
 import App from './App.jsx'
 

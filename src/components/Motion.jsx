@@ -148,6 +148,7 @@ export const EditorialImageReveal = ({ children, delay = 0, theme = 'dark', clas
   }
 
   const coverColor = theme === 'light' ? 'var(--color-warm-ivory)' : 'var(--color-deep-charcoal)';
+  const isRtl = typeof document !== 'undefined' && document.documentElement.dir === 'rtl';
 
   return (
     <div ref={ref} className={className} style={{ position: 'relative', overflow: 'hidden' }}>
@@ -159,7 +160,7 @@ export const EditorialImageReveal = ({ children, delay = 0, theme = 'dark', clas
           position: 'absolute',
           top: 0, left: 0, right: 0, bottom: 0,
           backgroundColor: coverColor,
-          transformOrigin: 'right',
+          transformOrigin: isRtl ? 'left' : 'right',
           zIndex: 10
         }}
       />
@@ -183,6 +184,8 @@ export const Divider = ({ className, delay = 0, duration = 0.8, color = 'var(--c
     return <div className={className} style={{ width: '100%', height: '1px', backgroundColor: color }} />;
   }
 
+  const isRtl = typeof document !== 'undefined' && document.documentElement.dir === 'rtl';
+
   return (
     <div ref={ref} className={className} style={{ width: '100%', height: '1px', overflow: 'hidden' }}>
       <motion.div
@@ -193,7 +196,7 @@ export const Divider = ({ className, delay = 0, duration = 0.8, color = 'var(--c
           width: '100%',
           height: '100%',
           backgroundColor: color,
-          transformOrigin: 'left'
+          transformOrigin: isRtl ? 'right' : 'left'
         }}
       />
     </div>

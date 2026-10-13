@@ -62,7 +62,7 @@
 .controls {
   position: absolute;
   bottom: 40px;
-  right: var(--space-desktop);
+  inset-inline-end: var(--space-desktop);
   display: flex;
   align-items: center;
   gap: 24px;
@@ -135,27 +135,27 @@
     pointer-events: auto;
     top: auto;
     bottom: 40px;
-    left: var(--space-desktop);
+    inset-inline-start: var(--space-desktop);
     transform: none;
   }
 }
 
 @media (max-width: 1023px) {
   .controls {
-    right: var(--space-tablet); /* Assuming space-tablet instead of space-mobile for 1024-768 */
+    inset-inline-end: var(--space-tablet);
   }
 }
 
 @media (hover: none) and (max-width: 1023px) {
   .affordance {
-    left: var(--space-tablet);
+    inset-inline-start: var(--space-tablet);
   }
 }
 
 @media (max-width: 767px) {
   .controls {
     bottom: 24px;
-    right: var(--space-mobile);
+    inset-inline-end: var(--space-mobile);
   }
   .navButton {
     width: 44px;
@@ -166,6 +166,6 @@
 @media (hover: none) and (max-width: 767px) {
   .affordance {
     bottom: 24px;
-    left: var(--space-mobile);
+    inset-inline-start: var(--space-mobile);
   }
 }

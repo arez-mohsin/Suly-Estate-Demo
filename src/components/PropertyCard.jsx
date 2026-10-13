@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import styles from './PropertyCard.module.css';
 import { Icons } from './Icons';
 import { ImageReveal } from './Motion';
@@ -8,6 +9,8 @@ import { ImageReveal } from './Motion';
 const MotionLink = motion.create ? motion.create(Link) : motion(Link);
 
 export const PropertyCard = ({ property }) => {
+  const { t } = useTranslation();
+
   return (
     <MotionLink
       to={`/properties/${property.slug}`}
@@ -20,7 +23,7 @@ export const PropertyCard = ({ property }) => {
         <ImageReveal scale={1.025} duration={1.0} className={styles.imageRevealContainer}>
           <img 
             src={property.heroImage || property.image} 
-            alt={property.name} 
+            alt={property.heroImageAlt || property.name} 
             loading="lazy"
             decoding="async"
             className={styles.image}
@@ -35,15 +38,15 @@ export const PropertyCard = ({ property }) => {
         </div>
         
         <div className={styles.facts}>
-          <span>{property.bedrooms} Beds</span>
+          <span><bdi dir="ltr">{property.bedrooms}</bdi> {t('common.beds')}</span>
           <span className={styles.dot}>•</span>
-          <span>{property.bathrooms} Baths</span>
+          <span><bdi dir="ltr">{property.bathrooms}</bdi> {t('common.baths')}</span>
           <span className={styles.dot}>•</span>
-          <span>{property.interiorArea} m²</span>
+          <span><bdi dir="ltr">{property.interiorArea} m²</bdi></span>
         </div>
 
         <div className={styles.footer}>
-          <span className={styles.price}>{property.price}</span>
+          <span className={styles.price}><bdi dir="ltr">{property.price}</bdi></span>
           <span className={styles.arrow}><Icons.ArrowRight /></span>
         </div>
       </div>

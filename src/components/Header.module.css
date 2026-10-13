@@ -97,6 +97,15 @@
   }
 }
 
+:global([dir="rtl"]) .navLink::after {
+  transform-origin: left;
+}
+
+:global([dir="rtl"]) .navLink:hover::after,
+:global([dir="rtl"]) .navLink.active::after {
+  transform-origin: right;
+}
+
 .navLink.active {
   opacity: 1;
 }
@@ -169,6 +178,10 @@
   .mobileNavLink:hover {
     transform: translateX(8px);
     opacity: 0.7;
+  }
+
+  :global([dir="rtl"]) .mobileNavLink:hover {
+    transform: translateX(-8px);
   }
 }
 

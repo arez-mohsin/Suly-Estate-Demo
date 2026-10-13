@@ -88,10 +88,20 @@
 .arrow {
   transition: transform 250ms cubic-bezier(0.21, 0.47, 0.32, 0.98);
   color: var(--color-off-white);
+  display: flex;
+  align-items: center;
+}
+
+:global([dir="rtl"]) .arrow {
+  transform: scaleX(-1);
 }
 
 @media (hover: hover) {
   .card:hover .arrow {
     transform: translateX(4px);
+  }
+
+  :global([dir="rtl"]) .card:hover .arrow {
+    transform: scaleX(-1) translateX(4px);
   }
 }

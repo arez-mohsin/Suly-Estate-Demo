@@ -122,6 +122,7 @@
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--space-mobile);
     scroll-behavior: smooth;
     gap: 16px;
     padding: 0 var(--space-mobile);

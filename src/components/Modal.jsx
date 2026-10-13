@@ -5,11 +5,13 @@ import styles from './Modal.module.css';
 import { Icons } from './Icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSmoothScroll } from '../providers/SmoothScrollProvider';
+import { useTranslation } from 'react-i18next';
 
 const ModalPortalContext = createContext(null);
 export const useModalPortal = () => useContext(ModalPortalContext);
 
 export const Modal = ({ isOpen, onClose, children, dataQa }) => {
+  const { t } = useTranslation();
   const dialogRef = useRef(null);
   const portalRef = useRef(null);
   const [portalElement, setPortalElement] = useState(null);
@@ -87,7 +89,7 @@ export const Modal = ({ isOpen, onClose, children, dataQa }) => {
             <button 
               className={styles.closeButton} 
               onClick={onClose}
-              aria-label="Close modal"
+              aria-label={t('common.close')}
               data-qa="consultation-close"
             >
               <Icons.Close />

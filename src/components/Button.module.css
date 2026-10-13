@@ -72,3 +72,8 @@
 .transparentOutline:hover {
   background: rgba(242, 239, 232, 0.15);
 }
+
+:global([dir="rtl"]) .button {
+  letter-spacing: 0;
+  text-transform: none;
+}

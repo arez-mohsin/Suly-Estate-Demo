@@ -5,6 +5,8 @@ import { useModalPortal } from './Modal';
 import styles from './CustomSelect.module.css';
 import { motion } from 'framer-motion';
 
+import { useTranslation } from 'react-i18next';
+
 // Custom Chevron icon
 const ChevronDown = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,9 +23,12 @@ export const CustomSelect = ({
   placeholder, 
   id, 
   required, 
-  disabled 
+  disabled,
+  dir
 }) => {
   const portalContainer = useModalPortal();
+  const { i18n } = useTranslation();
+  const direction = dir || (i18n.language === 'en' ? 'ltr' : 'rtl');
 
   return (
     <div className={styles.wrapper}>
@@ -34,6 +39,7 @@ export const CustomSelect = ({
         required={required}
         disabled={disabled}
         name={name}
+        dir={direction}
       >
         <Select.Trigger className={styles.trigger} id={id} aria-label={label}>
           <Select.Value placeholder={placeholder} />

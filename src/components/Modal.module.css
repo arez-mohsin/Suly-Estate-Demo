@@ -27,7 +27,7 @@
 .closeButton {
   position: absolute;
   top: 24px;
-  right: 24px;
+  inset-inline-end: 24px;
   background: transparent;
   border: none;
   color: var(--color-near-black);
@@ -47,7 +47,7 @@
 .portalContainer {
   position: absolute;
   top: 0;
-  left: 0;
+  inset-inline-start: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
@@ -72,6 +72,6 @@
   
   .closeButton {
     top: 16px;
-    right: 16px;
+    inset-inline-end: 16px;
   }
 }

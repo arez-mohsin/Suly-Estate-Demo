@@ -85,7 +85,9 @@
   align-items: center;
   width: 100%;
   min-height: 44px; /* Touch target */
-  padding: 0 32px 0 12px;
+  padding-inline-start: 12px;
+  padding-inline-end: 32px;
+  padding-block: 0;
   font-family: var(--font-body);
   font-size: 0.9375rem;
   color: var(--color-near-black);
@@ -93,6 +95,7 @@
   cursor: pointer;
   user-select: none;
   box-sizing: border-box;
+  text-align: start;
 }
 
 .item[data-highlighted] {
@@ -102,7 +105,7 @@
 
 .itemIndicator {
   position: absolute;
-  right: 12px;
+  inset-inline-end: 12px;
   display: flex;
   align-items: center;
   justify-content: center;

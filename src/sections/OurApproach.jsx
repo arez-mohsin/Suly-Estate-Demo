@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import styles from './OurApproach.module.css';
 import { Reveal, TextReveal, EditorialImageReveal } from '../components/Motion';
 import { usePerformanceProfile } from '../hooks/usePerformanceProfile';
@@ -7,6 +8,7 @@ import { usePerformanceProfile } from '../hooks/usePerformanceProfile';
 const EASE_PREMIUM = [0.21, 0.47, 0.32, 0.98];
 
 export const OurApproach = () => {
+  const { t } = useTranslation();
   const { reduceMotion } = usePerformanceProfile();
   const quoteRef = useRef(null);
   const isQuoteInView = useInView(quoteRef, { once: true, margin: "-10% 0px" });
@@ -15,11 +17,11 @@ export const OurApproach = () => {
     <section className={styles.section} id="approach" data-header-theme="light">
       <div className={styles.container}>
         <div className={styles.content}>
-          <TextReveal as="h2" text={"Homes for\na more intentional life."} className={`display-2 ${styles.title}`} />
+          <TextReveal as="h2" text={t('approach.title')} className={`display-2 ${styles.title}`} />
           
           <Reveal y={14} delay={0.2}>
             <p className={styles.description}>
-              A home is more than an address. We focus on considered properties across Sulaymaniyah—places defined by architecture, setting and how they feel to live in.
+              {t('approach.description')}
             </p>
           </Reveal>
           
@@ -33,7 +35,7 @@ export const OurApproach = () => {
                   transition={{ duration: 0.8, delay: 0.5, ease: EASE_PREMIUM }}
                 />
               )}
-              "True luxury is not about excess, but the perfect proportion of space, light, and nature."
+              "{t('approach.quote')}"
             </blockquote>
           </Reveal>
         </div>
@@ -42,7 +44,7 @@ export const OurApproach = () => {
           <EditorialImageReveal theme="light">
             <img 
               src="/images/approach.jpg" 
-              alt="Beautifully composed premium interior in a Sulaymaniyah residence" 
+              alt={t('approach.imageAlt')} 
               loading="lazy"
               decoding="async"
               className={styles.image}

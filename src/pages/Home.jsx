@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Hero } from '../sections/Hero';
 import { FeaturedListings } from '../sections/FeaturedListings';
 import { SignatureResidence } from '../sections/SignatureResidence';
@@ -10,6 +11,12 @@ import { PrivateConsultation } from '../sections/PrivateConsultation';
 import { PageTransition } from '../components/PageTransition';
 
 export function Home() {
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    document.title = t('meta.titleDefault');
+  }, [t]);
+
   return (
     <PageTransition>
       <Hero />

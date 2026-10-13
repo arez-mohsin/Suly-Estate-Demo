@@ -1,25 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Modal } from './Modal';
 import { Button } from './Button';
 import { CustomSelect } from './CustomSelect';
 import { AnimatePresence, motion } from 'framer-motion';
 import styles from './GlobalConsultationModal.module.css';
 
-const INTEREST_OPTIONS = [
-  { value: 'details', label: 'Property details' },
-  { value: 'buy', label: 'Buying a property' },
-  { value: 'sell', label: 'Selling a property' },
-  { value: 'viewing', label: 'Arranging a viewing' },
-  { value: 'other', label: 'Other' }
-];
-
-const CONTACT_OPTIONS = [
-  { value: 'whatsapp', label: 'WhatsApp' },
-  { value: 'phone', label: 'Phone' },
-  { value: 'email', label: 'Email' }
-];
-
 export const GlobalConsultationModal = () => {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [intent, setIntent] = useState('');
@@ -30,6 +18,20 @@ export const GlobalConsultationModal = () => {
   const [interest, setInterest] = useState('buy');
   
   const formRef = useRef(null);
+
+  const contactOptions = [
+    { value: 'whatsapp', label: t('modal.contactOptions.whatsapp') },
+    { value: 'phone', label: t('modal.contactOptions.phone') },
+    { value: 'email', label: t('modal.contactOptions.email') }
+  ];
+
+  const interestOptions = [
+    { value: 'details', label: t('modal.interestOptions.details') },
+    { value: 'buy', label: t('modal.interestOptions.buy') },
+    { value: 'sell', label: t('modal.interestOptions.sell') },
+    { value: 'viewing', label: t('modal.interestOptions.viewing') },
+    { value: 'other', label: t('modal.interestOptions.other') }
+  ];
 
   useEffect(() => {
     const handleOpen = (e) => {
@@ -79,17 +81,17 @@ export const GlobalConsultationModal = () => {
   };
 
   // Determine Title & Eyebrow semantics
-  let eyebrow = "PRIVATE CONSULTATION";
-  let mainTitle = "Request Consultation";
-  let subtitle = "Tell us what you're looking for and how you'd prefer to be contacted.";
+  let eyebrow = t('modal.privateConsultation');
+  let mainTitle = t('modal.requestConsultation');
+  let subtitle = t('modal.consultationSubtitle');
 
   if (intent === 'viewing') {
-    eyebrow = "PRIVATE VIEWING";
-    mainTitle = "Arrange a Viewing";
+    eyebrow = t('modal.privateViewing');
+    mainTitle = t('modal.arrangeViewing');
     if (propertyName) subtitle = propertyName;
   } else if (intent === 'details') {
-    eyebrow = "PROPERTY INQUIRY";
-    mainTitle = "Request Details";
+    eyebrow = t('modal.propertyInquiry');
+    mainTitle = t('modal.requestDetails');
     if (propertyName) subtitle = propertyName;
   }
 
@@ -117,28 +119,28 @@ export const GlobalConsultationModal = () => {
                   <input type="hidden" name="propertySlug" value={propertySlug} />
                   
                   <div className={styles.fieldGroup}>
-                    <label htmlFor="modal-name">Name</label>
+                    <label htmlFor="modal-name">{t('modal.name')}</label>
                     <input type="text" id="modal-name" name="name" autoComplete="name" required />
                   </div>
                   
                   <div className={styles.fieldGroup}>
-                    <label htmlFor="modal-email">Email</label>
-                    <input type="email" id="modal-email" name="email" autoComplete="email" required />
+                    <label htmlFor="modal-email">{t('modal.email')}</label>
+                    <input type="email" id="modal-email" name="email" autoComplete="email" dir="ltr" required />
                   </div>
 
                   <div className={styles.fieldGroup}>
-                    <label htmlFor="modal-phone">Phone</label>
-                    <input type="tel" inputMode="tel" id="modal-phone" name="phone" autoComplete="tel" required />
+                    <label htmlFor="modal-phone">{t('modal.phone')}</label>
+                    <input type="tel" inputMode="tel" id="modal-phone" name="phone" autoComplete="tel" dir="ltr" required />
                   </div>
 
                   <div className={styles.fieldGroup}>
                     <CustomSelect 
                       id="modal-preferred-contact"
                       name="preferredContact"
-                      label="Preferred contact"
+                      label={t('modal.preferredContact')}
                       value={contactMethod}
                       onValueChange={setContactMethod}
-                      options={CONTACT_OPTIONS}
+                      options={contactOptions}
                       required
                     />
                   </div>
@@ -147,22 +149,22 @@ export const GlobalConsultationModal = () => {
                     <CustomSelect 
                       id="modal-interest"
                       name="interest"
-                      label="Interested In"
+                      label={t('modal.interestedIn')}
                       value={interest}
                       onValueChange={setInterest}
-                      options={INTEREST_OPTIONS}
+                      options={interestOptions}
                       required
                     />
                   </div>
                   
                   <div className={`${styles.fieldGroup} ${styles.fullWidth}`}>
-                    <label htmlFor="modal-message">Message</label>
+                    <label htmlFor="modal-message">{t('modal.message')}</label>
                     <textarea id="modal-message" name="message" required></textarea>
                   </div>
                   
                   <div className={styles.footer}>
                     <Button variant="primary" type="submit" className={styles.submitBtn}>
-                      Submit Request
+                      {t('modal.submitRequest')}
                     </Button>
                   </div>
                 </form>
@@ -177,13 +179,13 @@ export const GlobalConsultationModal = () => {
               transition={{ duration: 0.3 }}
               className={styles.successState}
             >
-              <p className={styles.eyebrow}>REQUEST RECEIVED</p>
-              <h3 className={styles.formTitle}>Thank you.</h3>
+              <p className={styles.eyebrow}>{t('modal.requestReceived')}</p>
+              <h3 className={styles.formTitle}>{t('modal.thankYou')}</h3>
               <p className={styles.formDesc}>
-                This demonstration does not send a real message, but the inquiry flow is complete.
+                {t('modal.successNotice')}
               </p>
               <Button variant="outline" onClick={closeModal} style={{ marginTop: '16px' }}>
-                Close window
+                {t('modal.closeWindow')}
               </Button>
             </motion.div>
           )}

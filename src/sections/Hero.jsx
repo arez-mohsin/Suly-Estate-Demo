@@ -4,29 +4,22 @@ import { Link } from 'react-router-dom';
 import styles from './Hero.module.css';
 import { Button } from '../components/Button';
 import { usePerformanceProfile } from '../hooks/usePerformanceProfile';
+import { useTranslation } from 'react-i18next';
 
-const slides = [
-  {
-    id: 1,
-    image: '/images/goizha-hero.jpg',
-    location: 'GOIZHA · SULAYMANIYAH',
-    alt: 'Contemporary hillside luxury villa in Goizha overlooking Sulaymaniyah'
-  },
-  {
-    id: 2,
-    image: '/images/sarchinar-hero.jpg',
-    location: 'SARCHINAR · SULAYMANIYAH',
-    alt: 'Premium landscaped city residence in Sarchinar'
-  },
-  {
-    id: 3,
-    image: '/images/tasluja-hero.jpg',
-    location: 'TASLUJA · SULAYMANIYAH',
-    alt: 'Large modern residence exterior with open terrain in Tasluja'
-  }
+const SLIDE_TEMPLATES = [
+  { id: 1, image: '/images/goizha-hero.jpg', key: 'goizha' },
+  { id: 2, image: '/images/sarchinar-hero.jpg', key: 'sarchinar' },
+  { id: 3, image: '/images/tasluja-hero.jpg', key: 'tasluja' },
 ];
 
 export const Hero = () => {
+  const { t } = useTranslation();
+  const slides = React.useMemo(() => SLIDE_TEMPLATES.map((s) => ({
+    ...s,
+    location: t(`hero.slideLocations.${s.key}`),
+    alt: t(`hero.slideAlts.${s.key}`),
+  })), [t]);
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const shouldReduceMotion = useReducedMotion();
@@ -42,7 +35,7 @@ export const Hero = () => {
     timerRef.current = setTimeout(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5500); 
-  }, [shouldReduceMotion]);
+  }, [shouldReduceMotion, slides.length]);
 
   useEffect(() => {
     const handleVisibilityChange = () => {
@@ -68,7 +61,7 @@ export const Hero = () => {
     const nextSlide = (currentSlide + 1) % slides.length;
     const img = new Image();
     img.src = slides[nextSlide].image;
-  }, [currentSlide]);
+  }, [currentSlide, slides]);
 
   const handleManualSelect = (index) => {
     setCurrentSlide(index);
@@ -200,9 +193,9 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: EASE_PREMIUM }}
+            style={{ whiteSpace: 'pre-line' }}
           >
-            Remarkable homes.<br />
-            Distinctive living.
+            {t('hero.title')}
           </motion.h1>
           
           <div className={styles.contentFooter}>
@@ -211,9 +204,9 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.35, ease: EASE_PREMIUM }}
+              style={{ whiteSpace: 'pre-line' }}
             >
-              Exceptional residences across Sulaymaniyah,<br/>
-              selected for architecture, setting and quality of life.
+              {t('hero.description')}
             </motion.p>
             
             <motion.div
@@ -221,7 +214,7 @@ export const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5, ease: EASE_PREMIUM }}
             >
-              <Button as={Link} to="/properties" variant="transparentOutline">Explore properties</Button>
+              <Button as={Link} to="/properties" variant="transparentOutline">{t('hero.exploreCta')}</Button>
             </motion.div>
           </div>
         </div>
@@ -233,12 +226,12 @@ export const Hero = () => {
             <button
               role="tab"
               aria-selected={currentSlide === index}
-              aria-label={`View slide ${index + 1}`}
+              aria-label={t('common.viewSlide', { number: index + 1 })}
               className={`${styles.sliderButton} ${currentSlide === index ? styles.active : ''}`}
               onClick={() => handleManualSelect(index)}
               data-qa={`hero-slide-control-${index + 1}`}
             >
-              <span className={styles.slideNumber}>0{index + 1}</span>
+              <span className={styles.slideNumber}><bdi dir="ltr">0{index + 1}</bdi></span>
               {currentSlide === index && (
                 <div className={styles.activeIndicatorContainer}>
                   {reduceMotion ? (

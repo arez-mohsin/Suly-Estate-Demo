@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import styles from './PropertyCarousel.module.css';
 
 export const PropertyCarousel = ({ images, onImageClick }) => {
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n.language !== 'en';
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -136,24 +139,24 @@ export const PropertyCarousel = ({ images, onImageClick }) => {
       
       <div className={styles.controls}>
         <div className={styles.counter}>
-          {currentIndex + 1} / {images.length}
+          <bdi dir="ltr">{currentIndex + 1} / {images.length}</bdi>
         </div>
         <div className={styles.buttons}>
           <button 
             className={styles.navButton} 
             onClick={handleManualPrev}
-            aria-label="Previous image"
+            aria-label={t('common.previousImage')}
             data-qa="property-carousel-prev"
           >
-            ←
+            {isRtl ? '→' : '←'}
           </button>
           <button 
             className={styles.navButton} 
             onClick={handleManualNext}
-            aria-label="Next image"
+            aria-label={t('common.nextImage')}
             data-qa="property-carousel-next"
           >
-            →
+            {isRtl ? '←' : '→'}
           </button>
         </div>
       </div>
@@ -161,10 +164,10 @@ export const PropertyCarousel = ({ images, onImageClick }) => {
       <button 
         className={styles.affordance} 
         onClick={() => onImageClick(currentIndex)}
-        aria-label="View full gallery"
+        aria-label={t('common.viewGallery')}
         data-qa="property-gallery-open"
       >
-        View gallery
+        {t('common.viewGallery')}
       </button>
     </div>
   );

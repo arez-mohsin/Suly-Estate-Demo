@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Stagger } from './Motion';
 import { usePerformanceProfile } from '../hooks/usePerformanceProfile';
 import styles from './PhotoTour.module.css';
@@ -7,6 +8,7 @@ import styles from './PhotoTour.module.css';
 const EASE_PREMIUM = [0.21, 0.47, 0.32, 0.98];
 
 export const PhotoTour = ({ images, onImageClick }) => {
+  const { t } = useTranslation();
   const { reduceMotion } = usePerformanceProfile();
 
   const itemVariants = {
@@ -21,7 +23,7 @@ export const PhotoTour = ({ images, onImageClick }) => {
   return (
     <div className={styles.photoTour}>
       <div className={styles.header}>
-        <h3 className="eyebrow">Photo Tour</h3>
+        <h3 className="eyebrow">{t('propertyDetail.photoTour')}</h3>
       </div>
       <Stagger className={styles.rail} staggerDelay={0.05} delay={0.1}>
         {images.map((img, index) => (
@@ -29,7 +31,7 @@ export const PhotoTour = ({ images, onImageClick }) => {
             key={index} 
             className={styles.thumbnailBtn}
             onClick={() => onImageClick(index)}
-            aria-label={`View full image of ${img.alt}`}
+            aria-label={t('common.viewFullImage', { alt: img.alt })}
             variants={itemVariants}
           >
             <img 

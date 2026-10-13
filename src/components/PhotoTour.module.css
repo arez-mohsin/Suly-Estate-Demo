@@ -47,10 +47,10 @@
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scroll-padding-inline: 0;
+    scroll-padding-inline: var(--space-mobile);
     gap: 12px;
-    margin: 0 calc(-1 * var(--space-mobile));
-    padding: 0 var(--space-mobile);
+    margin-inline: calc(-1 * var(--space-mobile));
+    padding-inline: var(--space-mobile);
     -ms-overflow-style: none;
     scrollbar-width: none;
   }

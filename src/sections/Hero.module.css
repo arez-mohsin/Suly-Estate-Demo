@@ -108,7 +108,7 @@
 
 .sliderControls {
   position: absolute;
-  right: var(--space-desktop);
+  inset-inline-end: var(--space-desktop);
   bottom: 140px;
   display: flex;
   gap: 16px;
@@ -164,6 +164,10 @@
   animation: progress 5.5s linear forwards;
 }
 
+:global([dir="rtl"]) .activeIndicatorProgress {
+  transform-origin: right;
+}
+
 .activeIndicatorProgress.paused {
   animation-play-state: paused;
 }
@@ -192,12 +196,26 @@
   opacity: 0.3;
 }
 
+:global([dir="rtl"]) .title {
+  letter-spacing: 0;
+  line-height: 1.14;
+}
+
+:global([dir="rtl"]) .locationBadge {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+:global([dir="rtl"]) .description {
+  line-height: 1.65;
+}
+
 @media (max-width: 1100px) {
   .hero {
     padding: 0 var(--space-tablet) 120px;
   }
   .sliderControls {
-    right: var(--space-tablet);
+    inset-inline-end: var(--space-tablet);
     bottom: 40px;
   }
 }
@@ -226,8 +244,8 @@
 
   .sliderControls {
     bottom: 32px;
-    right: auto;
-    left: var(--space-mobile);
+    inset-inline-end: auto;
+    inset-inline-start: var(--space-mobile);
     gap: 8px;
   }
 }

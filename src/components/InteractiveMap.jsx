@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styles from './InteractiveMap.module.css';
 
 export const InteractiveMap = ({ src, title, dataQaWrapper, dataQaIframe }) => {
+  const { t } = useTranslation();
   const [isInteractive, setIsInteractive] = useState(false);
 
   const handleKeyDown = (e) => {
@@ -23,9 +25,9 @@ export const InteractiveMap = ({ src, title, dataQaWrapper, dataQaIframe }) => {
           <button 
             className={styles.exploreBtn} 
             onClick={() => setIsInteractive(true)}
-            aria-label={`Explore ${title}`}
+            aria-label={`${t('locationsMap.exploreBtn')} - ${title}`}
           >
-            Explore Map
+            {t('locationsMap.exploreBtn')}
           </button>
         </div>
       )}
@@ -41,7 +43,7 @@ export const InteractiveMap = ({ src, title, dataQaWrapper, dataQaIframe }) => {
       ></iframe>
       {isInteractive && (
         <div className={styles.hint}>
-          Press ESC or move mouse away to exit map
+          {t('locationsMap.exitHint')}
         </div>
       )}
     </div>
