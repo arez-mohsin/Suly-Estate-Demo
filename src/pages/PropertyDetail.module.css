@@ -220,6 +220,33 @@
   margin-top: 40px;
 }
 
+@media (max-width: 1099px) {
+  .relatedGrid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--space-desktop);
+    scroll-behavior: smooth;
+    gap: 24px;
+    padding-bottom: 24px;
+    margin-right: calc(-1 * var(--space-desktop));
+    margin-left: calc(-1 * var(--space-desktop));
+    padding-left: var(--space-desktop);
+    padding-right: var(--space-desktop);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .relatedGrid::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .relatedGrid > * {
+    flex: 0 0 320px;
+    scroll-snap-align: start;
+  }
+}
+
 .notFound {
   padding-top: 150px;
   padding-bottom: 100px;
@@ -310,6 +337,15 @@
     height: 300px;
   }
   .relatedGrid {
-    grid-template-columns: 1fr;
+    scroll-padding-inline: var(--space-mobile);
+    margin-right: calc(-1 * var(--space-mobile));
+    margin-left: calc(-1 * var(--space-mobile));
+    padding-left: var(--space-mobile);
+    padding-right: var(--space-mobile);
+    gap: 16px;
+  }
+  
+  .relatedGrid > * {
+    flex: 0 0 85%;
   }
 }
