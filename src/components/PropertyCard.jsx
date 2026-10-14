@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './PropertyCard.module.css';
 import { Icons } from './Icons';
 import { ImageReveal } from './Motion';
+import { ResponsiveImage } from './ResponsiveImage';
 
 const MotionLink = motion.create ? motion.create(Link) : motion(Link);
 
@@ -21,12 +22,15 @@ export const PropertyCard = ({ property }) => {
     >
       <div className={styles.imageWrapper}>
         <ImageReveal scale={1.025} duration={1.0} className={styles.imageRevealContainer}>
-          <img 
+          <ResponsiveImage 
             src={property.heroImage || property.image} 
             alt={property.heroImageAlt || property.name} 
+            preset="card"
             loading="lazy"
             decoding="async"
             className={styles.image}
+            width={896}
+            height={1200}
           />
         </ImageReveal>
       </div>

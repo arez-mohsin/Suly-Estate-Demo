@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Stagger } from './Motion';
 import { usePerformanceProfile } from '../hooks/usePerformanceProfile';
+import { ResponsiveImage } from './ResponsiveImage';
 import styles from './PhotoTour.module.css';
 
 const EASE_PREMIUM = [0.21, 0.47, 0.32, 0.98];
@@ -34,11 +35,15 @@ export const PhotoTour = ({ images, onImageClick }) => {
             aria-label={t('common.viewFullImage', { alt: img.alt })}
             variants={itemVariants}
           >
-            <img 
+            <ResponsiveImage 
               src={img.src} 
               alt={img.alt} 
+              preset="thumbnail"
               loading="lazy" 
+              decoding="async"
               className={styles.thumbnailImg}
+              width={320}
+              height={240}
             />
           </motion.button>
         ))}

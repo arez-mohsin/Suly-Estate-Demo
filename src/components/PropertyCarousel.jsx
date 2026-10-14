@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import styles from './PropertyCarousel.module.css';
+import { ResponsiveImage } from './ResponsiveImage';
 
 export const PropertyCarousel = ({ images, onImageClick }) => {
   const { t, i18n } = useTranslation();
@@ -123,11 +124,15 @@ export const PropertyCarousel = ({ images, onImageClick }) => {
           return (
             <div key={index} className={className}>
               {shouldLoad && (
-                <img 
+                <ResponsiveImage 
                   src={img.src} 
                   alt={img.alt} 
+                  preset="hero"
                   className={styles.image} 
                   loading={index === 0 ? "eager" : "lazy"} 
+                  fetchPriority={index === 0 ? "high" : "auto"}
+                  width={1024}
+                  height={1024}
                 />
               )}
             </div>

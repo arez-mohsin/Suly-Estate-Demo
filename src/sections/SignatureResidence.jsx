@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './SignatureResidence.module.css';
 import { Button } from '../components/Button';
 import { EditorialImageReveal, Stagger, StaggerItem, TextReveal, Divider } from '../components/Motion';
+import { ResponsiveImage } from '../components/ResponsiveImage';
 
 export const SignatureResidence = () => {
   const { t } = useTranslation();
@@ -14,12 +15,15 @@ export const SignatureResidence = () => {
       <div className={styles.container}>
         <div className={styles.imageWrapper}>
           <EditorialImageReveal theme="dark">
-            <img 
+            <ResponsiveImage 
               src="/images/goizha-living.jpg" 
               alt={t('signature.imageAlt')} 
+              preset="editorial"
               loading="lazy"
               decoding="async"
               className={styles.image}
+              width={1024}
+              height={1024}
             />
           </EditorialImageReveal>
         </div>

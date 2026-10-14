@@ -5,6 +5,8 @@ import styles from './Hero.module.css';
 import { Button } from '../components/Button';
 import { usePerformanceProfile } from '../hooks/usePerformanceProfile';
 import { useTranslation } from 'react-i18next';
+import { ResponsiveImage } from '../components/ResponsiveImage';
+import { getOptimizedImageUrl } from '../utils/imageCdn';
 
 const SLIDE_TEMPLATES = [
   { id: 1, image: '/images/goizha-hero.jpg', key: 'goizha' },
@@ -58,9 +60,20 @@ export const Hero = () => {
   }, [startTimer, currentSlide]);
 
   useEffect(() => {
+    // Respect user data-saver and slow connections to avoid competing with LCP
+    if (typeof navigator !== 'undefined') {
+      const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      if (conn?.saveData || conn?.effectiveType === 'slow-2g' || conn?.effectiveType === '2g') {
+        return;
+      }
+    }
+
     const nextSlide = (currentSlide + 1) % slides.length;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const preloadWidth = isMobile ? 768 : 1440;
+    
     const img = new Image();
-    img.src = slides[nextSlide].image;
+    img.src = getOptimizedImageUrl(slides[nextSlide].image, { width: preloadWidth, quality: 80 });
   }, [currentSlide, slides]);
 
   const handleManualSelect = (index) => {
@@ -152,12 +165,16 @@ export const Hero = () => {
             animate="animate"
             exit="exit"
           >
-            <img 
+            <ResponsiveImage 
               src={slides[currentSlide].image} 
               alt={slides[currentSlide].alt} 
+              preset="hero"
               className={styles.image}
               fetchPriority={currentSlide === 0 ? "high" : "auto"}
               loading={currentSlide === 0 ? "eager" : "lazy"}
+              decoding={currentSlide === 0 ? "sync" : "async"}
+              width={1024}
+              height={1024}
             />
           </motion.div>
         </AnimatePresence>

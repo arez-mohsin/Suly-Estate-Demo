@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './PrivateConsultation.module.css';
 import { Button } from '../components/Button';
 import { Stagger, StaggerItem, EditorialImageReveal, TextReveal } from '../components/Motion';
+import { ResponsiveImage } from '../components/ResponsiveImage';
 
 export const PrivateConsultation = () => {
   const { t } = useTranslation();
@@ -32,12 +33,15 @@ export const PrivateConsultation = () => {
 
         <div className={styles.imageWrapper}>
           <EditorialImageReveal delay={0.1} theme="dark">
-            <img 
+            <ResponsiveImage 
               src="/images/consultation-bg.jpg" 
               alt={t('consultationSection.imageAlt')} 
+              preset="editorial"
               loading="lazy"
               decoding="async"
               className={styles.image}
+              width={1024}
+              height={1024}
             />
           </EditorialImageReveal>
         </div>

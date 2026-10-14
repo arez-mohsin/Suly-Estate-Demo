@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './Neighborhoods.module.css';
 import { useLocalizedLocations } from '../hooks/useLocalizedProperties';
 import { Reveal, Stagger, StaggerItem, ImageReveal, TextReveal } from '../components/Motion';
+import { ResponsiveImage } from '../components/ResponsiveImage';
 
 export const Neighborhoods = () => {
   const { t } = useTranslation();
@@ -25,12 +26,15 @@ export const Neighborhoods = () => {
           <StaggerItem key={location.id} y={16}>
             <Link to="/#locations" className={styles.card}>
               <ImageReveal scale={1.025} duration={1.0} className={styles.imageRevealContainer}>
-                <img 
+                <ResponsiveImage 
                   src={location.image} 
                   alt={location.imageAlt} 
+                  preset="neighborhood"
                   loading="lazy"
                   decoding="async"
                   className={styles.image}
+                  width={896}
+                  height={1200}
                 />
               </ImageReveal>
               <div className={styles.overlay}>

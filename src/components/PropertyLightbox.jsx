@@ -8,8 +8,9 @@ import { useSmoothScroll } from '../providers/SmoothScrollProvider';
 
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
+import { getOptimizedImageUrl } from '../utils/imageCdn';
 
-export default function PropertyLightbox({ 'data-qa': dataQa, open, ...props }) {
+export default function PropertyLightbox({ 'data-qa': dataQa, open, slides = [], ...props }) {
   const { t } = useTranslation();
   const { lenis } = useSmoothScroll();
 
@@ -34,12 +35,23 @@ export default function PropertyLightbox({ 'data-qa': dataQa, open, ...props }) 
     'Exit Fullscreen': t('lightbox.fullscreenExit'),
   };
 
+  // Optimize lightbox slide sources to 1600px width with quality 82 for high DPI / crisp architecture
+  const optimizedSlides = React.useMemo(() => {
+    return slides.map(slide => ({
+      ...slide,
+      src: getOptimizedImageUrl(slide.src, { width: 1600, quality: 82 }),
+      // Also provide thumbnail image for thumbnails plugin
+      thumbnail: getOptimizedImageUrl(slide.src, { width: 320, quality: 75 })
+    }));
+  }, [slides]);
+
   return (
     <Lightbox
       open={open}
+      slides={optimizedSlides}
       plugins={[Zoom, Thumbnails, Fullscreen]}
       animation={{ fade: 250 }}
-      carousel={{ preload: 2, padding: "16px" }}
+      carousel={{ preload: 1, padding: "16px" }}
       styles={{ container: { backgroundColor: "rgba(11, 13, 12, 0.98)" } }}
       portal={{ container: { 'data-qa': dataQa } }}
       labels={labels}

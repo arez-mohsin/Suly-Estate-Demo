@@ -1,0 +1,348 @@
+[
+  {
+    "filename": "neigh-sarchinar.jpg",
+    "format": "JPG",
+    "width": 896,
+    "height": 1200,
+    "fileSizeKB": 1107,
+    "fileSizeBytes": 1133342,
+    "usedIn": [
+      "src/data/locations.js"
+    ]
+  },
+  {
+    "filename": "sarchinar-hero.jpg",
+    "format": "JPG",
+    "width": 1024,
+    "height": 1024,
+    "fileSizeKB": 1050,
+    "fileSizeBytes": 1075064,
+    "usedIn": [
+      "src/data/properties.js",
+      "src/sections/Hero.jsx"
+    ]
+  },
+  {
+    "filename": "hero-2.jpg",
+    "format": "JPG",
+    "width": 1376,
+    "height": 768,
+    "fileSizeKB": 1004,
+    "fileSizeBytes": 1027892,
+    "usedIn": [
+      "(unreferenced / legacy)"
+    ]
+  },
+  {
+    "filename": "sarchinar-living.jpg",
+    "format": "JPG",
+    "width": 1024,
+    "height": 1024,
+    "fileSizeKB": 1003,
+    "fileSizeBytes": 1026931,
+    "usedIn": [
+      "src/data/properties.js"
+    ]
+  },
+  {
+    "filename": "approach.jpg",
+    "format": "JPG",
+    "width": 1376,
+    "height": 768,
+    "fileSizeKB": 977,
+    "fileSizeBytes": 1000324,
+    "usedIn": [
+      "src/sections/OurApproach.jsx"
+    ]
+  },
+  {
+    "filename": "signature.jpg",
+    "format": "JPG",
+    "width": 928,
+    "height": 1152,
+    "fileSizeKB": 952,
+    "fileSizeBytes": 975272,
+    "usedIn": [
+      "(unreferenced / legacy)"
+    ]
+  },
+  {
+    "filename": "listing-4.jpg",
+    "format": "JPG",
+    "width": 896,
+    "height": 1200,
+    "fileSizeKB": 950,
+    "fileSizeBytes": 972671,
+    "usedIn": [
+      "(unreferenced / legacy)"
+    ]
+  },
+  {
+    "filename": "loc-asia.jpg",
+    "format": "JPG",
+    "width": 896,
+    "height": 1200,
+    "fileSizeKB": 950,
+    "fileSizeBytes": 972671,
+    "usedIn": [
+      "(unreferenced / legacy)"
+    ]
+  },
+  {
+    "filename": "tasluja-hero.jpg",
+    "format": "JPG",
+    "width": 1024,
+    "height": 1024,
+    "fileSizeKB": 931,
+    "fileSizeBytes": 952901,
+    "usedIn": [
+      "src/data/properties.js",
+      "src/sections/Hero.jsx"
+    ]
+  },
+  {
+    "filename": "neigh-goizha.jpg",
+    "format": "JPG",
+    "width": 896,
+    "height": 1200,
+    "fileSizeKB": 908,
+    "fileSizeBytes": 930029,
+    "usedIn": [
+      "src/data/locations.js"
+    ]
+  },
+  {
+    "filename": "bakrajo-garden.jpg",
+    "format": "JPG",
+    "width": 1024,
+    "height": 1024,
+    "fileSizeKB": 899,
+    "fileSizeBytes": 920574,
+    "usedIn": [
+      "src/data/properties.js"
+    ]
+  },
+  {
+    "filename": "goizha-hero.jpg",
+    "format": "JPG",
+    "width": 1024,
+    "height": 1024,
+    "fileSizeKB": 891,
+    "fileSizeBytes": 912684,
+    "usedIn": [
+      "src/data/properties.js",
+      "src/sections/Hero.jsx"
+    ]
+  },
+  {
+    "filename": "neigh-tasluja.jpg",
+    "format": "JPG",
+    "width": 896,
+    "height": 1200,
+    "fileSizeKB": 887,
+    "fileSizeBytes": 908641,
+    "usedIn": [
+      "src/data/locations.js"
+    ]
+  },
+  {
+    "filename": "tasluja-terrace.jpg",
+    "format": "JPG",
+    "width": 1024,
+    "height": 1024,
+    "fileSizeKB": 887,
+    "fileSizeBytes": 908037,
+    "usedIn": [
+      "src/data/properties.js"
+    ]
+  },
+  {
+    "filename": "bakrajo-living.jpg",
+    "format": "JPG",
+    "width": 1024,
+    "height": 1024,
+    "fileSizeKB": 880,
+    "fileSizeBytes": 901617,
+    "usedIn": [
+      "src/data/properties.js"
+    ]
+  },
+  {
+    "filename": "hero-3.jpg",
+    "format": "JPG",
+    "width": 1376,
+    "height": 768,
+    "fileSizeKB": 874,
+    "fileSizeBytes": 894935,
+    "usedIn": [
+      "(unreferenced / legacy)"
+    ]
+  },
+  {
+    "filename": "listing-1.jpg",
+    "format": "JPG",
+    "width": 896,
+    "height": 1200,
+    "fileSizeKB": 868,
+    "fileSizeBytes": 889284,
+    "usedIn": [
+      "(unreferenced / legacy)"
+    ]
+  },
+  {
+    "filename": "loc-europe.jpg",
+    "format": "JPG",
+    "width": 896,
+    "height": 1200,
+    "fileSizeKB": 868,
+    "fileSizeBytes": 889284,
+    "usedIn": [
+      "(unreferenced / legacy)"
+    ]
+  },
+  {
+    "filename": "tasluja-living.jpg",
+    "format": "JPG",
+    "width": 1024,
+    "height": 1024,
+    "fileSizeKB": 863,
+    "fileSizeBytes": 884202,
+    "usedIn": [
+      "src/data/properties.js"
+    ]
+  },
+  {
+    "filename": "listing-2.jpg",
+    "format": "JPG",
+    "width": 896,
+    "height": 1200,
+    "fileSizeKB": 859,
+    "fileSizeBytes": 879982,
+    "usedIn": [
+      "(unreferenced / legacy)"
+    ]
+  },
+  {
+    "filename": "loc-oceania.jpg",
+    "format": "JPG",
+    "width": 896,
+    "height": 1200,
+    "fileSizeKB": 859,
+    "fileSizeBytes": 879982,
+    "usedIn": [
+      "(unreferenced / legacy)"
+    ]
+  },
+  {
+    "filename": "hero-1.jpg",
+    "format": "JPG",
+    "width": 1376,
+    "height": 768,
+    "fileSizeKB": 857,
+    "fileSizeBytes": 877577,
+    "usedIn": [
+      "(unreferenced / legacy)"
+    ]
+  },
+  {
+    "filename": "goizha-living.jpg",
+    "format": "JPG",
+    "width": 1024,
+    "height": 1024,
+    "fileSizeKB": 853,
+    "fileSizeBytes": 873333,
+    "usedIn": [
+      "src/data/properties.js",
+      "src/sections/SignatureResidence.jsx"
+    ]
+  },
+  {
+    "filename": "hero.jpg",
+    "format": "JPG",
+    "width": 1376,
+    "height": 768,
+    "fileSizeKB": 833,
+    "fileSizeBytes": 852742,
+    "usedIn": [
+      "(unreferenced / legacy)"
+    ]
+  },
+  {
+    "filename": "consultation-bg.jpg",
+    "format": "JPG",
+    "width": 1024,
+    "height": 1024,
+    "fileSizeKB": 828,
+    "fileSizeBytes": 847948,
+    "usedIn": [
+      "src/sections/PrivateConsultation.jsx"
+    ]
+  },
+  {
+    "filename": "listing-3.jpg",
+    "format": "JPG",
+    "width": 896,
+    "height": 1200,
+    "fileSizeKB": 817,
+    "fileSizeBytes": 837092,
+    "usedIn": [
+      "(unreferenced / legacy)"
+    ]
+  },
+  {
+    "filename": "loc-na.jpg",
+    "format": "JPG",
+    "width": 896,
+    "height": 1200,
+    "fileSizeKB": 817,
+    "fileSizeBytes": 837092,
+    "usedIn": [
+      "(unreferenced / legacy)"
+    ]
+  },
+  {
+    "filename": "neigh-bakrajo.jpg",
+    "format": "JPG",
+    "width": 896,
+    "height": 1200,
+    "fileSizeKB": 817,
+    "fileSizeBytes": 837092,
+    "usedIn": [
+      "(unreferenced / legacy)"
+    ]
+  },
+  {
+    "filename": "bakrajo-hero.jpg",
+    "format": "JPG",
+    "width": 1024,
+    "height": 1024,
+    "fileSizeKB": 801,
+    "fileSizeBytes": 819947,
+    "usedIn": [
+      "src/data/locations.js",
+      "src/data/properties.js"
+    ]
+  },
+  {
+    "filename": "sarchinar-bedroom.jpg",
+    "format": "JPG",
+    "width": 1024,
+    "height": 1024,
+    "fileSizeKB": 756,
+    "fileSizeBytes": 773830,
+    "usedIn": [
+      "src/data/properties.js"
+    ]
+  },
+  {
+    "filename": "goizha-kitchen.jpg",
+    "format": "JPG",
+    "width": 1024,
+    "height": 1024,
+    "fileSizeKB": 753,
+    "fileSizeBytes": 771412,
+    "usedIn": [
+      "src/data/properties.js"
+    ]
+  }
+]

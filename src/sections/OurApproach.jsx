@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './OurApproach.module.css';
 import { Reveal, TextReveal, EditorialImageReveal } from '../components/Motion';
 import { usePerformanceProfile } from '../hooks/usePerformanceProfile';
+import { ResponsiveImage } from '../components/ResponsiveImage';
 
 const EASE_PREMIUM = [0.21, 0.47, 0.32, 0.98];
 
@@ -42,12 +43,15 @@ export const OurApproach = () => {
         
         <div className={styles.imageWrapper}>
           <EditorialImageReveal theme="light">
-            <img 
+            <ResponsiveImage 
               src="/images/approach.jpg" 
               alt={t('approach.imageAlt')} 
+              preset="editorial"
               loading="lazy"
               decoding="async"
               className={styles.image}
+              width={1376}
+              height={768}
             />
           </EditorialImageReveal>
         </div>
